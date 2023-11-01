@@ -1,15 +1,16 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-import "./globals.css"
+import './globals.css'
 
-import { Providers } from "@/configs/uiprovider"
+import AuthProvider from '@/configs/authProvider'
+import { Providers } from '@/configs/uiprovider'
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "AI Horizon",
-  description: "Productivity goes on AI",
+  title: 'AI Horizon',
+  description: 'Productivity goes on AI',
 }
 
 export default function RootLayout({
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AuthProvider>{children}</AuthProvider>
+        </Providers>
       </body>
     </html>
   )
