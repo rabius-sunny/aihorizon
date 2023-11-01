@@ -1,12 +1,10 @@
-import React from 'react'
-
-import ThemeSwitcher from '@/components/shared/themeSwitcher'
+import HomeTop from '@/components/home/homeTop'
 
 export default function Home() {
   return (
     <div>
-      <div className='mt-2'>
-        <ThemeSwitcher />
+      <div className=''>
+        <HomeTop />
       </div>
     </div>
   )
