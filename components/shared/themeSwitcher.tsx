@@ -1,6 +1,7 @@
 'use client'
 
 import { useIsSSR } from '@react-aria/ssr'
+import { MoonStar, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 export default function ThemeSwitcher() {
@@ -13,7 +14,11 @@ export default function ThemeSwitcher() {
 
   return (
     <button type='button' onClick={onChange}>
-      {theme === 'light' || isSSR ? 'dark' : 'light'}
+      {theme === 'light' || isSSR ? (
+        <MoonStar color='darkblue' />
+      ) : (
+        <Sun color='yellow' />
+      )}
     </button>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { siteConfit } from '@/configs/site'
+import { siteConfig } from '@/configs/site'
 import { motion, useCycle } from 'framer-motion'
 
 import ThemeSwitcher from '../themeSwitcher'
@@ -18,7 +18,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: 'circle(30px at 40px 40px)',
+    clipPath: 'circle(20px at 40px 40px)',
     transition: {
       delay: 0.5,
       type: 'spring',
@@ -34,16 +34,16 @@ export default function Navbar() {
   return (
     <header className=''>
       <div
-        className='flex items-center justify-between p-6 lg:px-8'
+        className='flex items-center justify-between p-6 md:px-8'
         aria-label='Global'
       >
-        <div className='flex lg:flex-1'>
-          <a href='#' className='-m-1.5 p-1.5'>
+        <div className='flex md:flex-1 ml-14 md:ml-0'>
+          <Link href='/'>
             <span className='sr-only'>Your Company</span>
             aihorizon
-          </a>
+          </Link>
         </div>
-        <div className='z-[1000] lg:hidden'>
+        <div className='z-[1000] md:hidden'>
           <motion.nav
             className='motionnav'
             initial={false}
@@ -60,8 +60,8 @@ export default function Navbar() {
             aria-hidden='true'
           />
         )}
-        <div className='hidden lg:flex lg:gap-x-12'>
-          {siteConfit.navItems.map((item: { label: string; href: string }) => (
+        <div className='hidden md:flex md:gap-x-12'>
+          {siteConfig.navItems.map((item: { label: string; href: string }) => (
             <Link
               key={item.label}
               href={item.href}

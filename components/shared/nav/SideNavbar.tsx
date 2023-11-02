@@ -1,6 +1,9 @@
 'use client'
 
+import Link from 'next/link'
+import { siteConfig } from '@/configs/site'
 import { motion } from 'framer-motion'
+import { Slack } from 'lucide-react'
 
 const linkVariants = {
   open: {
@@ -27,10 +30,7 @@ const navVariants = {
   },
 }
 
-const colors = ['#FF008C', '#D309E1', '#9C1AFF', '#7700FF', '#4400FF']
-
-const MenuItem = ({ i }: { i: number }) => {
-  const style = { border: `2px solid ${colors[i]}` }
+const MenuItem = ({ item }: { item: TNavItem }) => {
   return (
     <motion.li
       variants={linkVariants}
@@ -38,8 +38,10 @@ const MenuItem = ({ i }: { i: number }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <div className='icon-placeholder' style={style} />
-      <div className='text-placeholder' style={style} />
+      <Slack className='text-teal-400 h-7 w-7 mr-2' />
+      <Link href={item.href} className='text-teal-600'>
+        {item.label}
+      </Link>
     </motion.li>
   )
 }
@@ -47,8 +49,8 @@ const MenuItem = ({ i }: { i: number }) => {
 export default function SideNavbar() {
   return (
     <motion.ul variants={navVariants} className='nav__ul'>
-      {[0, 1, 2, 3, 4].map((i) => (
-        <MenuItem i={i} key={i} />
+      {siteConfig.navItems.map((item: TNavItem, idx) => (
+        <MenuItem item={item} key={idx} />
       ))}
     </motion.ul>
   )

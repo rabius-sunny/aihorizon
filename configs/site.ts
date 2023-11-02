@@ -1,6 +1,6 @@
-export type SiteConfig = typeof siteConfit
+export type SiteConfig = typeof siteConfig
 
-export const siteConfit = {
+export const siteConfig = {
   name: 'AI Horizon',
   description: 'Productivity goes on the power of AI',
   navItems: [
