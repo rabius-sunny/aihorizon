@@ -5,6 +5,8 @@ import './globals.css'
 
 import { Providers } from '@/configs/provider'
 
+import Navbar from '@/components/shared/nav'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -16,7 +18,10 @@ export default function RootLayout({ children }: INode) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <Navbar />
+          <div>{children}</div>
+        </Providers>
       </body>
     </html>
   )
