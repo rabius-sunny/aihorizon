@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { siteConfit } from '@/configs/site'
 import { Dialog, Transition } from '@headlessui/react'
@@ -56,26 +56,30 @@ export default function HomeTop() {
         </nav>
         <Transition
           show={mobileMenuOpen}
-          enter='transition-opacity duration-75'
-          enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='transition-opacity duration-300'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
+          enter='transition duration-100 ease-out'
+          enterFrom='transform scale-95 opacity-0'
+          enterTo='transform scale-100 opacity-100'
+          leave='transition duration-75 ease-out'
+          leaveFrom='transform scale-100 opacity-100'
+          leaveTo='transform scale-95 opacity-0'
+          as={Fragment}
         >
           <Dialog
             as='div'
             className='lg:hidden'
-            open={mobileMenuOpen}
+            // open={mobileMenuOpen}
             onClose={setMobileMenuOpen}
           >
-            <div className='fixed inset-0 z-50' />
-            <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+            <div
+              className='fixed inset-0 z-50 bg-black/10 backdrop-blur-sm'
+              aria-hidden='true'
+            />
+            <Dialog.Panel className='fixed inset-y-0 left-0 z-50 w-2/3 overflow-y-auto bg-white dark:bg-slate-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
               <div className='flex items-center justify-between'>
-                <a href='#' className='-m-1.5 p-1.5'>
+                <Link href='#' className='-m-1.5 p-1.5'>
                   <span className='sr-only'>Your Company</span>
                   aihorizon
-                </a>
+                </Link>
                 <button
                   type='button'
                   className='-m-2.5 rounded-md p-2.5 '
@@ -93,7 +97,7 @@ export default function HomeTop() {
                         <a
                           key={item.label}
                           href={item.href}
-                          className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50'
+                          className='-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-100 dark:hover:bg-white/10'
                         >
                           {item.label}
                         </a>
@@ -103,7 +107,7 @@ export default function HomeTop() {
                   <div className='py-6'>
                     <a
                       href='#'
-                      className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 0 hover:bg-gray-50'
+                      className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 0 hover:bg-gray-100 dark:hover:bg-white/10'
                     >
                       Log in
                     </a>
@@ -139,7 +143,7 @@ export default function HomeTop() {
             </div>
           </div>
           <div className='text-center'>
-            <h1 className='text-4xl font-bold tracking-tight sm:text-6xl'>
+            <h1 className='text-4xl dark:text-yellow-500 font-bold tracking-tight sm:text-6xl'>
               Here, Your Best AI Friend
             </h1>
             <div className='mt-6 text-3xl font-bold tracking-tight sm:text-4xl leading-8 text-transparent bg-clip-text bg-gradient-to-r to-indigo-500 from-purple-500'>

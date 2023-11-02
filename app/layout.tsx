@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 
 import './globals.css'
 
-import AuthProvider from '@/configs/authProvider'
-import { Providers } from '@/configs/uiprovider'
+import { Providers } from '@/configs/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,17 +12,11 @@ export const metadata: Metadata = {
   description: 'Productivity goes on AI',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: INode) {
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Providers>
-          <AuthProvider>{children}</AuthProvider>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

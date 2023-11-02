@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
-    "@nextui-org/navbar": "^2.0.22",
-    "@nextui-org/switch": "^2.0.21",
-    "@nextui-org/system": "^2.0.10",
     "@react-aria/ssr": "^3.8.0",
     "@react-aria/visually-hidden": "^3.8.6",
+    "framer-motion": "^10.16.4",
     "lucide-react": "^0.291.0",
     "next": "14.0.1",
     "next-auth": "^4.24.4",
