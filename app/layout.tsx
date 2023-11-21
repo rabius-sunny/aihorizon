@@ -1,13 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 
 import './globals.css'
 
 import { Providers } from '@/configs/provider'
 
-import Navbar from '@/components/shared/nav'
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'AI Horizon',
@@ -19,7 +17,6 @@ export default function RootLayout({ children }: INode) {
     <html lang='en'>
       <body className={inter.className}>
         <Providers>
-          <Navbar />
           <div>{children}</div>
         </Providers>
       </body>

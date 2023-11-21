@@ -73,7 +73,7 @@ export default function Navbar() {
         </div>
         <div className='flex flex-1 items-center justify-end gap-4'>
           <ThemeSwitcher />
-          <Link href='#' className='text-sm font-semibold leading-6'>
+          <Link href='/dashboard' className='text-sm font-semibold leading-6'>
             Get Started <span aria-hidden='true'>&rarr;</span>
           </Link>
         </div>
