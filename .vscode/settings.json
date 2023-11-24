@@ -1,10 +1,13 @@
 {
-    "git.ignoreLimitWarning": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "prettier.configPath": ".prettierrc.js",
-    "prettier.jsxSingleQuote": true,
-    "prettier.requireConfig": false,
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.prettierPath": ""
+  "git.ignoreLimitWarning": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": ".prettierrc.js",
+  "prettier.jsxSingleQuote": true,
+  "prettier.requireConfig": false,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.prettierPath": "",
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }

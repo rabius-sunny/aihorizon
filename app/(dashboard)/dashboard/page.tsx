@@ -4,7 +4,25 @@ import { siteConfig, TDashboardItem } from '@/configs/site'
 import { ArrowRight } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
 
+import db from '@/lib/prisma-db'
+
 export default function Dashboard() {
+  const action = async (data: FormData) => {
+    'use server'
+    const username = data.get('username') as string
+    const password = data.get('password') as string
+    const image = data.get('image') as string
+
+    try {
+      const create = await db.user.create({
+        data: { username, password, image },
+      })
+      console.log('created data', create)
+    } catch (error) {
+      console.log('error at create', error)
+    }
+  }
+
   return (
     <div className='max-w-2xl mx-auto'>
       <h1 className='text-3xl md:text-5xl font-bold text-center'>
@@ -52,6 +70,40 @@ export default function Dashboard() {
               </div>
             </Link>
           ))}
+      </div>
+
+      <div className='my-10'>
+        <h1 className='text-center text-3xl'>Prisma Test</h1>
+        <form action={action}>
+          <input
+            required
+            name='username'
+            type='text'
+            placeholder='username'
+            className='my-2 block px-4 py-2 border-2 border-slate-300 rounded-lg'
+          />
+          <input
+            required
+            type='text'
+            name='password'
+            placeholder='password'
+            className='my-2 block px-4 py-2 border-2 border-slate-300 rounded-lg'
+          />
+          <input
+            required
+            type='text'
+            name='image'
+            placeholder='image'
+            className='my-2 block px-4 py-2 border-2 border-slate-300 rounded-lg'
+          />
+          <div className='my-2'>
+            <input
+              type='submit'
+              className='bg-black text-white px-4 py-2 rounded'
+              value='submit'
+            />
+          </div>
+        </form>
       </div>
     </div>
   )

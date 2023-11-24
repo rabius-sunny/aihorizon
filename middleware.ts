@@ -1,7 +1,9 @@
-import { withAuth } from 'next-auth/middleware'
+import NextAuth from 'next-auth'
 
-export default withAuth
+import authConfig from './configs/auth.config'
 
 export const config = {
-  matcher: ['/dashboards'],
+  matcher: ['/demo'],
 }
+
+export const { auth: middleware } = NextAuth(authConfig)
