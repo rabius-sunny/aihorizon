@@ -1,26 +1,27 @@
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import { PrismaClient } from '@prisma/client'
 import type { NextAuthConfig } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
 
-export default {
-  providers: [
-    CredentialsProvider({
-      name: 'Credentials',
-      credentials: {
-        username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
-        password: { label: 'Password', type: 'password' },
-      },
-      async authorize(credentials, req) {
-        const user = { id: '1', username: 'rabius-sunny', password: '123456' }
+const prisma = new PrismaClient()
 
-        if (
-          user.username === credentials.username &&
-          user.password === credentials.password
-        ) {
-          return user
-        } else {
-          return null
-        }
-      },
-    }),
-  ],
+export const authConfig = {
+  adapter: PrismaAdapter(prisma),
+  session: { strategy: 'jwt' },
+  pages: {
+    signIn: '/auth/login',
+  },
+  callbacks: {
+    authorized({ auth, request: { nextUrl } }) {
+      const isLoggedIn = !!auth?.user
+      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+      if (isOnDashboard) {
+        if (isLoggedIn) return true
+        return false
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL('/dashboard', nextUrl))
+      }
+      return true
+    },
+  },
+  providers: [],
 } satisfies NextAuthConfig
