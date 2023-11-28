@@ -9,5 +9,6 @@
   "prettier.prettierPath": "",
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
-  }
+  },
+  "prettier.trailingComma": "none"
 }
